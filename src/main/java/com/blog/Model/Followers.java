@@ -1,5 +1,6 @@
 package com.blog.Model;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -8,9 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Entity(name="following_tb")
+
+@Entity(name="followers_tb")
+@Getter
+@Setter
 public class Followers {
 
 	@Id
@@ -19,43 +25,22 @@ public class Followers {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="us_id", nullable = false)
+	@Basic(fetch=FetchType.LAZY)
 	public User user;
 	
-	public int fl_followers;
-
-	public long getFl_id() {
-		return fl_id;
-	}
-
-	public void setFl_id(long fl_id) {
-		this.fl_id = fl_id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public int getFl_followers() {
-		return fl_followers;
-	}
-
-	public void setFl_followers(int fl_followers) {
-		this.fl_followers = fl_followers;
-	}
-
-	public Followers(long fl_id, User user, int fl_followers) {
-		super();
-		this.fl_id = fl_id;
-		this.user = user;
-		this.fl_followers = fl_followers;
-	}
+	public int fl_friendId;
+	
 	public Followers() {
 		
 	}
+
+	public Followers(long fl_id, User user, int fl_friendId) {
+		super();
+		this.fl_id = fl_id;
+		this.user = user;
+		this.fl_friendId = fl_friendId;
+	}
+	
 	
 	
 }

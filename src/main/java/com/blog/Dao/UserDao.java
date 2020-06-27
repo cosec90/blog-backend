@@ -13,8 +13,10 @@ import com.blog.Model.User;
 public interface UserDao extends JpaRepository<User, Long>{
 	
 	@Query(value= "SELECT us_id from user_tb where us_username = ?1", nativeQuery = true)
-	User getUserId(String us_username);
+	Integer getUserId(String us_username);
 	
 	@Query(value= "SELECT * from user_tb where us_username = ?1", nativeQuery = true)
 	User findByUsername(String us_username);
+	
+	
 }
