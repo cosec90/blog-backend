@@ -55,4 +55,12 @@ public class ProfileController {
 		return true;
 	}
 	
+	@PostMapping("/updateProfileImg/{postId}")
+	public boolean updateProfileImg(@RequestParam("file")MultipartFile file,@PathVariable("postId")int id) {
+		
+		profileService.updateProfileImg(file,id);
+		
+		return true;
+	}
+	
 }

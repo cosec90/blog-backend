@@ -8,5 +8,5 @@ public interface FollowersService {
 	
 	boolean addFollowers(int id, String token);
 	List<Followers> getUserFollowers(String token);
-
+	boolean deleteFollower(int fl_id);
 }

@@ -15,5 +15,6 @@ public interface ProfileService {
 	Profile findById(int id);
 	ProfileDto uploadImg(MultipartFile file,String token) throws Exception;
 	boolean updateProfile(Profile profile, int pt_id, String token);
+	boolean updateProfileImg(MultipartFile file, long pl_id);
 
 }

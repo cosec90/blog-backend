@@ -1,5 +1,8 @@
 package com.blog.ServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +46,19 @@ public class UserImpl implements UserService{
 		User user = userDao.findByUsername(us_username);
 		
 		return getUserDto(user);
+	}
+	
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		List<UserDto> userDto = new ArrayList<UserDto>();
+		List<User> user = userDao.findAll();
+		
+		for (User u: user) {
+			userDto.add(getUserDto(u));
+		}
+		
+		return userDto;
 	}
 	
 	@SuppressWarnings("unused")

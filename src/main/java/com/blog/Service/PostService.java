@@ -10,7 +10,7 @@ import com.blog.Model.Post;
 public interface PostService {
 	
 	boolean createPost(Post post, String token);
-	boolean deletePost(int id);
+	boolean deletePost(int pt_id);
 	PostDto postImg(MultipartFile file, String token) throws Exception; 
 	List<PostDto> getPost();
 	List<PostDto> getPostByUser(int id);

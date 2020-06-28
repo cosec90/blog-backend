@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.Dao.UserDao;
+import com.blog.Dto.UserDto;
 import com.blog.Model.Followers;
 import com.blog.Model.Profile;
 import com.blog.Model.User;
@@ -39,10 +40,10 @@ public class UserController {
 	private ProfileServiceImpl profileServiceImpl;
 	
 	
-	@RequestMapping("/users")
-	public List<User> getAllUsers(){
+	@RequestMapping("/getUsers")
+	public List<UserDto> getAllUsers(){
 		
-		return userDao.findAll();
+		return userImpl.getAllUsers();
 	}
 	
 	@PostMapping("/signup")
@@ -71,6 +72,14 @@ public class UserController {
 		
 		List<Followers> followers = followersServiceImpl.getUserFollowers(token);
 		return followers;
+	}
+	
+	@PostMapping("/deleteFollower/{fl_id}")
+	public boolean deleteFollower(@PathVariable("fl_id")int fl_Id) {
+		
+		followersServiceImpl.deleteFollower(fl_Id);
+		
+		return true;
 	}
 	
 

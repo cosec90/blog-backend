@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 @Entity(name="profile_tb")
@@ -102,6 +103,7 @@ public class Profile {
 		this.useProf = useProf;
 	}
 
+	
 	public Profile() {
 		
 	}

@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,6 +41,7 @@ public class User {
 	private List<Followers> followers;
 	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY ,mappedBy = "useProf", optional = false)
+	@LazyToOne(value = LazyToOneOption.NO_PROXY)
 	private Profile profile;
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY ,mappedBy = "userPost")

@@ -47,4 +47,13 @@ public class FollowersServiceImpl  implements FollowersService{
 		return followers;
 	}
 
+	@Override
+	public boolean deleteFollower(int fl_id) {
+		
+		Followers follower = followersDao.getFollowerById(fl_id);
+		followersDao.delete(follower);
+		
+		return true;
+	}
+
 }

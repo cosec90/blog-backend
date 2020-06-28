@@ -113,6 +113,22 @@ public class ProfileServiceImpl implements ProfileService{
 		
 	}
 
+	@Override
+	public boolean updateProfileImg(MultipartFile file, long pl_id) {
+		
+		String old_path = profileDao.getImg(pl_id);
+		
+		File old_file = new File(old_path);
+		
+		old_file.delete();
+		
+		String new_path ="D:\\blog-images\\"+pl_id+"\\"+file.getOriginalFilename();
+		
+		profileDao.updateProfileImg(new_path, pl_id);
+		
+		return true;
+	}
+
 	@SuppressWarnings("unused")
 	public ProfileDto getProfileDto(Profile entity) {
 		
